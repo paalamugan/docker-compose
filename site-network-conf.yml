@@ -1,0 +1,46 @@
+version: '3'
+services:
+  web:
+    image: brettt89/silverstripe-web
+    container_name: web
+    working_dir: /var/www
+    ports:
+      - 8080:80
+    volumes:
+      - .:/var/www/html
+    networks:
+      backend:
+        ipv4_address: 172.16.100.99
+
+  database:
+    image: mysql
+    container_name: database
+    volumes:
+      - db-data:/var/lib/mysql
+    restart: always
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+    networks:
+      backend:
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      - PMA_HOST=database
+    restart: always
+    ports:
+      - 8081:80
+    volumes:
+      - /sessions
+    networks:
+      backend:
+
+volumes:
+  db-data:
+networks:
+  backend:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.100.0/24
