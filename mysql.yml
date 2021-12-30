@@ -1,9 +1,11 @@
+# docker run --name some-mysql -e MYSQL_ROOT_HOST=% -e MYSQL_ROOT_PASSWORD=password -d mysql/mysql-server:latest
+
 version: '2'
 services:
 
   ### Mysql container
   mysql:
-    image: mysql:latest
+    image: mysql/mysql-server:latest
     ports:
       - "3306:3306"
     volumes:
