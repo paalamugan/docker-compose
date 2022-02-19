@@ -5,7 +5,8 @@ RUN groupadd -r app
 RUN useradd -g app app
 
 # Set ownership and permissions
-RUN chown -R app:app /app
+# RUN chown -R app:app /app
+COPY --chown=app:app . /app
 
 # Switch to user
 USER app
