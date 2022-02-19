@@ -11,7 +11,8 @@ RUN chown -R app:app /app
 USER app
 
 # Application setup
-FROM node:17-alpine
+# Supported tags and respective Dockerfile links, 17-alpine3.14, 17.4-alpine3.14, 17.4.0-alpine3.14, alpine3.14, current-alpine3.14
+FROM node:17-alpine 
 
 WORKDIR /app
 
