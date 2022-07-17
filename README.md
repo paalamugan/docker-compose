@@ -36,7 +36,7 @@ Specify the base image, usually the first instruction of the file, but in fact, 
    FROM [--platform=<platform>] <image>[@<digest>] [AS <name>]
 
   # Usage
-   FROM centos
+   FROM ubuntu
    FROM openjdk:8-jre
    FROM node:12.18.4-alpine@sha256:757574c5a2...
 ```
@@ -65,8 +65,8 @@ docker build --build-arg parameter=234 -t test:1.0
 
 # Note
 # ARG can be used before FROM, outside of the FROM build phase, so it cannot be used in any instructions after FROM.
-ARG CENTOS_VERSION=laster
-FROM centos:${CENTOS_VERSION}
+ARG UBUNTU_VERSION=laster
+FROM ubuntu:${UBUNTU_VERSION}
 ```
 
 ### ENV
@@ -94,7 +94,7 @@ COPY <src>... <dest>
 COPY "<src>",... "<dest>"
 
 # Usage
-COPY test.jar /opt/web/
+COPY test.js /opt/web/
 ```
 
 ### ADD
@@ -155,7 +155,7 @@ RUN <command>
 RUN ["executable", "param1", "param2"]
 
 # Usage
-RUN yum install -y net-tools
+RUN apt install -y net-tools
 RUN ["/bin/bash", "-c", "echo helloworld"]
 ```
 
