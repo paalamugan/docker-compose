@@ -110,7 +110,7 @@ ADD test.txt /tmp/test
 ```
 
 ### WORKDIR
-This instruction sets the working directory for subsequent directives, if it does not exist, the directory will be created automatically.
+This command sets the working directory for subsequent directives, if it does not exist, the directory will be created automatically.
 
 ```
 # Format
@@ -121,7 +121,7 @@ WORKDIR /build
 ```
 
 ### LABEL 
-This directive is used to specify the metadata tag information of the image.
+This command is used to specify the metadata tag information of the image.
 
 ```
 # Format
@@ -133,7 +133,7 @@ LABEL description="This text illustrates"
 ```
 
 ### CMD
-This instruction is used to set the command to be executed when the container starts after building the image.
+This command is used to set the command to be executed when the container starts after building the image.
 
 ```
 # Format
@@ -147,7 +147,7 @@ CMD ["node", "server.js"]
 ```
 
 ### RUN
-This instruction is used to specify the command to be executed when building the image. The main difference between RUN and CMD is that CMD is executed when the container starts, while RUN is executed during the container construction.
+This command is used to specify the command to be executed when building the image. The main difference between RUN and CMD is that CMD is executed when the container starts, while RUN is executed during the container construction.
 
 ```
 # Format
