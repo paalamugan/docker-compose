@@ -69,6 +69,119 @@ ARG CENTOS_VERSION=laster
 FROM centos:${CENTOS_VERSION}
 ```
 
+### ENV
+This command is used to set environment variables for the container, both during the build process and in the launched container.
+
+```
+# Format
+ENV <key>=<value> ...
+
+# Note
+# More than one can be set, or another syntax ENV <key> <value> can be used. The official website recommends using the former, and the latter may be deleted in future versions.
+# ENV variables override ARG variables
+
+# Usage
+ENV APP_VERSION=1.1.0
+ENV WEB_HOME /opt/webapps
+```
+
+### COPY
+This command is used to copy files or directories from the path to the container.
+
+```
+# Format
+COPY <src>... <dest>
+COPY "<src>",... "<dest>"
+
+# Usage
+COPY test.jar /opt/web/
+```
+
+### ADD
+This command is used to copy files, directories, or remote files to the image, and the tar-type compressed package file will be automatically decompressed.
+
+```
+# Format
+ADD <src>... <dest>
+ADD "<src>",... "<dest>"
+
+# Usage
+ADD test.txt /tmp/test
+```
+
+### WORKDIR
+This instruction sets the working directory for subsequent directives, if it does not exist, the directory will be created automatically.
+
+```
+# Format
+WORKDIR /path/to/workdir
+
+# Usage
+WORKDIR /build
+```
+
+### LABEL 
+This directive is used to specify the metadata tag information of the image.
+
+```
+# Format
+LABEL <key>=<value> <key>=<value> <key>=<value> ...
+
+# Usage
+LABEL version="1.0"
+LABEL description="This text illustrates"
+```
+
+### CMD
+This instruction is used to set the command to be executed when the container starts after building the image.
+
+```
+# Format
+CMD ["executable","param1","param2"]
+CMD ["param1","param2"]
+CMD command param1 param2
+
+# Usage
+CMD sleep 40; node server.js
+CMD ["node", "server.js"]
+```
+
+### RUN
+This instruction is used to specify the command to be executed when building the image. The main difference between RUN and CMD is that CMD is executed when the container starts, while RUN is executed during the container construction.
+
+```
+# Format
+RUN <command>
+RUN ["executable", "param1", "param2"]
+
+# Usage
+RUN yum install -y net-tools
+RUN ["/bin/bash", "-c", "echo helloworld"]
+```
+
+### EXPOSE
+This command is used to specify that the container is running on the specified port. You can specify the listening protocol. If not specified, the default is TCP.
+
+```
+# Format
+EXPOSE <port> [<port>/<protocol>...]
+
+# Usage
+EXPOSE 80/udp
+EXPOSE 80 443
+```
+
+### VOLUME
+This command is used to create a mount point with the specified name that can map the directory outside the container.
+
+```
+# Format
+VOLUME ["/data"]
+
+# Usage
+VOLUME /myvol
+```
+
 ## [Docker compose common commands](https://docs.docker.com/engine/reference/commandline/docker/)
 
 - build: Build container.
