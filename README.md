@@ -2,6 +2,26 @@
 
 Configuration of multiple docker-compose.yml service file examples.
 
+## How to install docker compose
+
+- Download the docker-compose file
+
+```sh
+sudo curl -L https://github.com/docker/compose/releases/download/1.16.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+```
+
+- Add executable permission to the file.
+
+```sh
+sudo chmod +x /usr/local/bin/docker-compose
+```
+
+- Test installation results.
+
+```sh
+docker-compose --version
+```
+
 ## Docker compose instructions
 
 - version: Specify the compsoe version corresponding to the current file, mainly 1, 2.x and 3.x
