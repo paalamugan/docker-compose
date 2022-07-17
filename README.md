@@ -2,8 +2,10 @@
 
 Configuration of multiple docker-compose.yml service file examples.
 
-version: Specify the compsoe version corresponding to the current file, mainly 1, 2.x and 3.x
-service: service list
+## Docker compose instructions
+
+- version: Specify the compsoe version corresponding to the current file, mainly 1, 2.x and 3.x
+- service: service list
  <service-name>: service name
   image: Specify the running image, you can directly pull the existing image for processing
   build: Set the folder where the Dockerfile is located, which can process images that need to be built with Dockerfile
