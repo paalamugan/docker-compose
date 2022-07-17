@@ -182,7 +182,7 @@ VOLUME ["/data"]
 VOLUME /myvol
 ```
 
-## [Docker compose common commands](https://docs.docker.com/engine/reference/commandline/docker/)
+## [Docker common commands](https://docs.docker.com/engine/reference/commandline/docker/)
 
 - build: Build container.
 - ps: List all containers of the current project.
