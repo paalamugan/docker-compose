@@ -22,7 +22,19 @@ sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 ```
 
-## Docker compose instructions
+## [Docker compose common commands](https://docs.docker.com/engine/reference/commandline/docker/)
+
+- build: Build container.
+- ps: List all containers of the current project.
+- up: Build the container and start the container, common parameters: -d background start, - specify the configuration file.
+- exec: Into the specified container.
+- top: View the running status of each container in the project.
+- logs: View the output of the container.
+- down: Stop and remove all containers and remove the corresponding network.
+- rm: Remove all stalled containers.
+- start/stop/restart: Start container/stop container/restart container.
+
+## [Docker compose format](https://docs.docker.com/compose/compose-file/)
 
 - version: Specify the compsoe version corresponding to the current file, mainly 1, 2.x and 3.x
 - services: service list
