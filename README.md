@@ -209,7 +209,7 @@ VOLUME /myvol
      - ports: Expose the port of the container, the format is host port: container port
        - 8080:8080
      - hostname: set the hostname of the container
-     - volumes: Set the mount point of the container, which can be mounted on the host, the main format is host path: container path [: access mode]
+     - volumes: Set the mount point of the container, which can be mounted on the host, the main format is `"host path":"container path"[: "access mode(w,r,rw)"]`
        - /opt/data:/opt/data
        - /var/lib/mysql:/var/lib/mysql:rw
      - volumes_from: mount all data volumes of another service or container
