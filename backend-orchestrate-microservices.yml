@@ -1,0 +1,134 @@
+# Specify the version number
+version: '3'
+services:
+  # Registry Service
+  secondkill-register:
+    # nacos-1.4.2image
+    image: nacos/nacos-server:1.4.2
+    # Restart method: always
+    restart: always
+    # Port Mapping
+    ports:
+      - 8848:8848
+    # container name
+    container_name: secondkill-register
+    # hostname
+    hostname: secondkill-register
+    # Environment variable, set the startup mode to stand-alone startup
+    environment:
+      MODE: standalone
+    # add to web app
+    networks:
+      - app
+
+  # database service
+  secondkill-mysql:
+    # The database corresponds to the Dockerfile directory
+    build:
+      context: ./db
+    # Set database password
+    environment:
+      MYSQL_ROOT_PASSWORD: 86598659yu
+    restart: always
+    container_name: secondkill-mysql
+    image: secondkill-mysql
+    ports:
+      - 3306:3306
+    networks:
+      - app
+
+  # redis service
+  secondkill-redis:
+    # redis-3.2 image
+    image: redis:3.2
+    ports:
+      - 6379:6379
+    restart: always
+    container_name: secondkill-redis
+    hostname: secondkill-redis
+    networks:
+      - app
+
+  # rabbitmq service
+  secondkill-rabbitmq:
+    # rabbitmq-3.8.4 image
+    image: rabbitmq:3.8.4
+    ports:
+      - 5672:5672
+      - 15672:15672
+    restart: always
+    container_name: secondkill-rabbitmq
+    hostname: secondkill-rabbitmq
+    networks:
+      - app
+
+# The following are microservices
+
+  # Gateway service
+  secondkill-zuul:
+    # Gateway service corresponds to Dockerfile path
+    build:
+      context: ./secondkill-zuul
+    ports:
+      - 8000:8000
+    restart: always
+    container_name: secondkill-zuul
+    hostname: secondkill-zuul
+    networks:
+      - app
+
+  # Authentication service
+  secondkill-auth:
+    # Authentication service corresponds to Dockerfile path
+    build:
+      context: ./secondkill-auth
+    ports:
+      - 8002:8002
+    restart: always
+    container_name: secondkill-auth
+    hostname: secondkill-auth
+    networks:
+      - app
+
+  # product service
+  secondkill-goods:
+    # The product service corresponds to the Dockerfile path
+    build:
+      context: ./secondkill-service/secondkill-goods
+    ports:
+      - 8021:8021
+    restart: always
+    container_name: secondkill-goods
+    hostname: secondkill-goods
+    networks:
+      - app
+
+  # Order service
+  secondkill-order:
+    # The order service corresponds to the Dockerfile path
+    build:
+      context: ./secondkill-service/secondkill-order
+    ports:
+      - 8010:8010
+    restart: always
+    container_name: secondkill-order
+    hostname: secondkill-order
+    networks:
+      - app
+
+  # User service
+  secondkill-user:
+    # User service corresponds to Dockerfile path
+    build:
+      context: ./secondkill-service/secondkill-user
+    ports:
+      - 8001:8001
+    restart: always
+    container_name: secondkill-user
+    hostname: secondkill-user
+    networks:
+      - app
+
+# set network as app
+networks:
+  app:
