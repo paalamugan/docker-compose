@@ -24,6 +24,6 @@ Configuration of multiple docker-compose.yml service file examples.
        - service_name
        - container_name
      - environment: set environment variables
-       RACK_ENV=development
-networks: configure networks
- app_netwotk:
+       - RACK_ENV=development
+- networks: configure networks
+  - app_netwotk:
